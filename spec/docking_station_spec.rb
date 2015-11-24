@@ -2,24 +2,32 @@ require 'docking_station'
 require 'bike'
 
 describe DockingStation do
-  it 'returns "bike released" if input code is correct' do
+
+  it 'checks if the station is able to release bikes' do
     expect(subject).to respond_to :release_bike
   end
 
-  it 'returns true if bike released is working' do
-    bike = subject.release_bike
-    expect(bike).to respond_to :working?
+  describe '#release_bike' do
+    it 'returns true if the bike released is working' do
+      bike = Bike.new
+      expect(bike.working?).to eq true
+    end
+
+    it 'raise error if bike is already released' do
+      bike = Bike.new
+      expect{subject.release_bike}.to raise_error("No bikes!")
+    end
   end
 
-  it 'returns true if bike is docked' do
-    bike = subject.release_bike
-    expect(subject.dock(bike)).to eq 'docked'
+  it 'checks if bike can be docked' do
+    bike = Bike.new
+    expect(subject).to respond_to(:dock).with(1).argument
   end
 
-  it 'returns true if there are any docked bikes' do
-    bike = subject.release_bike
+  it 'returns the docked bike' do
+    bike = Bike.new
     subject.dock(bike)
-    expect(subject.any_bikes).to eq true
+    expect(subject.bike).to eq bike
   end
 
 end

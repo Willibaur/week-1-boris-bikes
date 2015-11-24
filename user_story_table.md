@@ -18,3 +18,12 @@ I'd like to see if a bike is working
 -----------------------------------------
 | Person            |                   |
 | Good bike         |  is_bike_working  |
+
+
+combined story table:
+
+|     Objects       |     Messages       |
+------------------------------------------
+| Person            |                    |
+| Bike              |  is_bike_working?  |
+| Docking station   |  release_bike      |

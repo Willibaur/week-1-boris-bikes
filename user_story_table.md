@@ -4,7 +4,7 @@ So that I can use a bike,
 I'd like a docking station to release a bike.
 
 |     Objects       |     Messages      |
------------------------------------------
+--------------------|--------------------
 | Person            |                   |
 | Docking station   |   release_bike    |
 |  Bike             |   use_bike        |
@@ -15,7 +15,7 @@ So that I can use a good bike,
 I'd like to see if a bike is working
 
 |     Objects       |     Messages      |
------------------------------------------
+--------------------|--------------------
 | Person            |                   |
 | Good bike         |  is_bike_working  |
 
@@ -23,7 +23,7 @@ I'd like to see if a bike is working
 combined story table:
 
 |     Objects       |     Messages       |
-------------------------------------------
+--------------------|---------------------
 | Person            |                    |
 | Bike              |  is_bike_working?  |
 | Docking station   |  release_bike      |

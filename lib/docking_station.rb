@@ -1,16 +1,25 @@
-require_relative 'bike'
-
 class DockingStation
 
-attr_reader
+attr_reader :bikes
 
-  def release_bike
-    bike = Bike.new
-    bike.docked = false
+  def initialize
+
+    @bikes = 10
   end
 
-  def dock_bike
-    bike.docked = true
+  def release_bike
+    @bikes -= 1
+
+    bike = Bike.new
+  end
+
+  def dock(bike)
+    @bikes += 1
+    bike.status = 'docked'
+  end
+
+  def any_bikes
+    return true if @bikes > 0
   end
 
 end

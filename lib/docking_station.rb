@@ -1,16 +1,15 @@
+require_relative 'bike'
+
 class DockingStation
 
-attr_reader :bike
+  attr_reader :docked_bike
 
   def release_bike
-    raise "No bikes!" unless @bike
-    @bike
+    bike = Bike.new
   end
 
   def dock(bike)
-    raise "No space!" if @bike
-    @bike = bike
+    @docked_bike = bike
   end
-
 
 end

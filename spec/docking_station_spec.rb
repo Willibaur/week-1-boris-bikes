@@ -12,8 +12,16 @@ describe DockingStation do
     it 'checks if the station is able to release bikes' do
       expect(subject).to respond_to :release_bike
     end
+
     it 'raise error if bike has already been released' do
       expect{subject.release_bike}.to raise_error("No bikes!")
+    end
+
+    it 'raise error if bike is broken' do
+      bike = Bike.new
+      bike.broken = true
+      subject.dock(bike)
+      expect{subject.release_bike}.to raise_error("Broken bike. Can't release")
     end
   end
 

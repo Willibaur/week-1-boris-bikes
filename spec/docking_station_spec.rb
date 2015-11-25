@@ -3,6 +3,11 @@ require 'bike'
 
 describe DockingStation do
 
+  it 'checks that default capacity is updated' do
+    docking_station = DockingStation.new(30)
+    expect(docking_station.capacity).to eq 30
+  end
+
   describe '#release_bike' do
     it 'checks if the station is able to release bikes' do
       expect(subject).to respond_to :release_bike
@@ -22,7 +27,8 @@ describe DockingStation do
       expect(subject).to respond_to :dock
     end
     it 'raise error if docking station is full' do
-      expect{21.times { subject.dock(Bike.new)} }.to raise_error("Station full!")
+      subject.capacity.times { subject.dock(Bike.new)}
+      expect{subject.dock(Bike.new)}.to raise_error("Station full!")
     end
   end
 

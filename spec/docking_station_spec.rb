@@ -31,6 +31,6 @@ describe DockingStation do
       expect{subject.dock(Bike.new)}.to raise_error("Station full!")
     end
   end
-
+#testing git plus in atom
 
 end

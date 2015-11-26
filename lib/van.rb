@@ -2,13 +2,16 @@ require 'docking_station'
 
 class Van
 
-  attr_accessor :bikes_in_van
-
-  def collect_broken_bikes(station)
-    bikes_in_van = station.docked_bike
-    #.select {|elem| elem.broken? }
-    #station.docked_bike.delete_if {|elem| elem.broken?}
+  def bikes_on_board=(thing)
+    @bikes_on_board = thing
   end
 
+  def bikes_on_board
+    @bikes_on_board
+  end
+
+  def collect_broken_bikes(station)
+    @bikes_on_board = station.docked_bike.select{|elem| elem.broken?} 
+  end
 
 end

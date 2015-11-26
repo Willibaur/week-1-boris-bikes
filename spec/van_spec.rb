@@ -2,11 +2,12 @@ require 'van'
 
 describe Van do
 
-  it 'collects bikes' do
-    #bike = double(:bike, broken?: true)
-    station = double(:station, docked_bike: [bike])
+  it 'collects broken bikes from station' do
+    broken_bike = double(:broken_bike, broken?: true)
+    bike = double(:bike, broken?: false)
+    station = double(:station, docked_bike: [broken_bike, bike])
     subject.collect_broken_bikes(station)
-    expect(subject.bikes_in_van).to eq [bike]
+    expect(subject.bikes_on_board).to eq [broken_bike]
   end
 
 

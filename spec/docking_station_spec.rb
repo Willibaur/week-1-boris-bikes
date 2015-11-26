@@ -31,8 +31,9 @@ describe DockingStation do
 
 
   it 'returns true if the bike released is working' do
-    bike = double(:bike, working?: true)
-    expect(bike).to be_working
+    bike = double(:bike, broken?: false)
+    subject.dock(bike)
+    expect(subject.release_bike).to eq bike
   end
 
   describe '#dock' do

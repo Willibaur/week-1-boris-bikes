@@ -3,6 +3,8 @@ require 'bike'
 
 describe DockingStation do
 
+  # let(:bike) {double :bike}
+
   it 'checks that default capacity is updated' do
     docking_station = DockingStation.new(30)
     expect(docking_station.capacity).to eq 30
@@ -18,18 +20,19 @@ describe DockingStation do
       expect{subject.release_bike}.to raise_error("No bikes!")
     end
 
+
     it 'raise error if bike is broken' do
-      bike = double(:bike)
-      bike.report_broken
-      subject.dock(bike)
+      bike = double(:bike, broken?: true)
+      subject.dock bike
       expect{subject.release_bike}.to raise_error("Broken bike. Can't release")
     end
 
   end
 
+
   it 'returns true if the bike released is working' do
-    bike = double(:bike)
-    expect(bike.working?).to eq true
+    bike = double(:bike, working?: true)
+    expect(bike).to be_working
   end
 
   describe '#dock' do
